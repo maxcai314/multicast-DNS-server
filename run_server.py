@@ -10,7 +10,7 @@ class HttpHandler(SimpleHTTPRequestHandler):
         self.send_response(200)
         self.send_header("Content-type", "text/html")
         self.end_headers()
-        self.wfile.write(b"<p>Hello World!</p>")
+        self.wfile.write(b"<p style=\"font-size: 2rem\">Hello World!</p>")
 
 
 def run_http_server(port=80):
@@ -37,8 +37,7 @@ if __name__ == "__main__":
     # register the http server
     mDNS_handler.zeroconf_register("_http._tcp.local.",
                                    "http server", 80, server_url="testing.local")
-    mDNS_handler.zeroconf_register("_http._tcp.local.",
-                                   "http server", 80, server_url="maxcai.homepage")
+    print("registered http server at http://testing.local")
     mDNS_handler.zeroconf_register("_http._tcp.local.",
                                    "Printer", 80, server_url="printer.local", address="192.168.86.88")
 
